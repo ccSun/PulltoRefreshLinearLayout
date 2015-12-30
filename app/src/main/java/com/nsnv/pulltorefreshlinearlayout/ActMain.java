@@ -46,10 +46,12 @@ public class ActMain extends AppCompatActivity {
                         adapter.notifyItemInserted(0);
                         recycler_test.scrollToPosition(0);
 
-                        refresh_linely.stopRefreshSucess();
+                        refresh_linely.stopRefreshSuccess();
                     }
                 }, 1700);
             }
         });
+
+        refresh_linely.setEnableLoadmore(true);
     }
 }

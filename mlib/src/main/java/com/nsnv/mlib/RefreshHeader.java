@@ -24,11 +24,11 @@ public class RefreshHeader extends FrameLayout {
     private TextView txt_header_time;
     private Resources res;
 
-    public int getState() {
+    public STATE getState() {
         return state;
     }
 
-    private int state;
+    private STATE state;
 
     public enum STATE{
         PULL_DOWN(0),
@@ -80,7 +80,7 @@ public class RefreshHeader extends FrameLayout {
 
     public void setState(STATE state){
 
-        this.state = state.VALUE;
+        this.state = state;
 
         switch (state){
 

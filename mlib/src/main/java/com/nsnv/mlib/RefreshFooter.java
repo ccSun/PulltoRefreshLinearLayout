@@ -21,6 +21,11 @@ public class RefreshFooter extends FrameLayout{
     private TextView txt_footer_state;
     private STATE mState = STATE.PULL_UP;
 
+
+    public STATE getState() {
+        return mState;
+    }
+
     public enum STATE{
         PULL_UP(1),
         RELEASE_TO_LOAD(2),
@@ -96,21 +101,19 @@ public class RefreshFooter extends FrameLayout{
 
                 progress_circle.setVisibility(VISIBLE);
                 txt_footer_state.setVisibility(GONE);
-//                progress_circle.setState(MProgressCircle.STATE.NORMAL_LOADING);
+                progress_circle.setStateLoading();
 
                 break;
             case SUCESS:
 
                 progress_circle.setVisibility(VISIBLE);
                 txt_footer_state.setVisibility(GONE);
-//                progress_circle.setState(MProgressCircle.STATE.SUCCESS);
 
                 break;
             case FAIL:
 
                 progress_circle.setVisibility(VISIBLE);
                 txt_footer_state.setVisibility(GONE);
-//                progress_circle.setState(MProgressCircle.STATE.FAIL);
 
                 break;
             default:
