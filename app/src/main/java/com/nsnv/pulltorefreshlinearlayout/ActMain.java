@@ -3,7 +3,6 @@ package com.nsnv.pulltorefreshlinearlayout;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -42,7 +41,7 @@ public class ActMain extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        
+
                         list.add(0, "ADD_" + list.size());
                         adapter.notifyItemInserted(0);
                         recycler_test.scrollToPosition(0);
