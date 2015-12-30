@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/refresh_header_footer_size">
+
+    <LinearLayout
+        android:id="@+id/linely_header_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/txt_header_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/refresh_header_pulldown"
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/txt_size_normal"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/refresh_header_time"
+                android:textSize="@dimen/txt_size_small"
+                />
+            <TextView
+                android:id="@+id/txt_header_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/txt_size_small"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.nsnv.mlib.widget.MProgressCircle
+        android:id="@+id/progress_header"
+        android:layout_width="@dimen/refresh_header_footer_progresscircle"
+        android:layout_height="@dimen/refresh_header_footer_progresscircle"
+        android:layout_toLeftOf="@id/linely_header_hint"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="15dp"
+        />
+
+</RelativeLayout>

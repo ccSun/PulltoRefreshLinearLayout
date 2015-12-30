@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="refresh_header_footer_size">40dp</dimen>
+    <dimen name="refresh_header_footer_progresscircle">30dp</dimen>
+
+    <dimen name="txt_size_small">12sp</dimen>
+    <dimen name="txt_size_normal">14sp</dimen>
+    <dimen name="txt_size_large">18sp</dimen>
+
+</resources>

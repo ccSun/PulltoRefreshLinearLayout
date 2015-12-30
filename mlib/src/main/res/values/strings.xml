@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">mlib</string>
+
+
+    <string name="refresh_header_pulldown">下拉开始刷新</string>
+    <string name="refresh_footer_pullup">上拉加载数据</string>
+    <string name="refresh_header_time">上次更新时间：</string>
+    <string name="refresh_refreshing">正在刷新...</string>
+    <string name="refresh_release">松开刷新数据</string>
+    <string name="refresh_sucess">恭喜您刷新成功</string>
+    <string name="refresh_fail">很抱歉刷新失败了</string>
+
+</resources>
