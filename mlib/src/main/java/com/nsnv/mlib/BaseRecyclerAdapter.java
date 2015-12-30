@@ -8,6 +8,7 @@ import android.view.animation.DecelerateInterpolator;
 import java.util.List;
 
 /**
+ *
  */
 public abstract class BaseRecyclerAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter{
 
@@ -28,8 +29,17 @@ public abstract class BaseRecyclerAdapter<VH extends RecyclerView.ViewHolder> ex
         return listData.size();
     }
 
+    /**
+     * Bind data to view from list.
+     * @param holder
+     * @param position
+     */
     public abstract void onBindViewHolderChild(VH holder, int position);
 
+    /**
+     * Override this to realize your animation.
+     * @param holder
+     */
     public void setItemAnimationSet(RecyclerView.ViewHolder holder){
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.playTogether(

@@ -7,7 +7,7 @@
     >
 
 
-    <com.nsnv.mlib.widget.MProgressCircle
+    <com.nsnv.mlib.MProgressCircle
         android:id="@+id/progress_footer"
         android:layout_width="@dimen/refresh_header_footer_progresscircle"
         android:layout_height="@dimen/refresh_header_footer_progresscircle"
