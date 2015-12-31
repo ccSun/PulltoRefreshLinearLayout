@@ -278,13 +278,17 @@ public class RefreshLinearly extends LinearLayout{
             viewChild = this.getChildAt(this.getChildCount() - 2);
             if(viewChild instanceof RecyclerView) {
 
-                int scrollOffset = ((RecyclerView) viewChild).computeVerticalScrollOffset();
-                int scrollRange = ((RecyclerView) viewChild).computeVerticalScrollRange();
-                int scrollExtent = ((RecyclerView) viewChild).computeVerticalScrollExtent();
+                RecyclerView recyclerView = (RecyclerView)viewChild;
+                int scrollOffset = recyclerView.computeVerticalScrollOffset();
+                int scrollRange = recyclerView.computeVerticalScrollRange();
+                int scrollExtent = recyclerView.computeVerticalScrollExtent();
                 if((scrollOffset+scrollExtent) == scrollRange)
                     return false;
             }else if(viewChild instanceof ScrollView){
-                // TODO
+
+                ScrollView scrollView = (ScrollView)viewChild;
+                if((scrollView.getChildAt(0).getMeasuredHeight()) == (scrollView.getHeight() + scrollView.getScrollY()))
+                    return false;
             }
         }
         return true;
