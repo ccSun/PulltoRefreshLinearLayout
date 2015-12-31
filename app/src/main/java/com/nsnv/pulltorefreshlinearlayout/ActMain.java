@@ -53,5 +53,19 @@ public class ActMain extends AppCompatActivity {
         });
 
         refresh_linely.setEnableLoadmore(true);
+        refresh_linely.setOnLoadMoreListener(new RefreshLinearly.OnLoadMoreListener() {
+            @Override
+            public void onLoadMore() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        list.add(list.size(), "LOADMORE" + list.size());
+                        adapter.notifyItemInserted(list.size());
+                        refresh_linely.stopLoadMoreSuccess();
+//                        refresh_linely.stopLoadMoreFail();
+                    }
+                }, 2000);
+            }
+        });
     }
 }

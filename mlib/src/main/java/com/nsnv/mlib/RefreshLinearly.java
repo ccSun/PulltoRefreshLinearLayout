@@ -7,7 +7,6 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Scroller;
@@ -78,7 +77,7 @@ public class RefreshLinearly extends LinearLayout{
             return false;
 
         if(header.getState() == RefreshHeader.STATE.REFRESHING
-                || header.getState() == RefreshHeader.STATE.SUCESS
+                || header.getState() == RefreshHeader.STATE.SUCCESS
                 || header.getState() == RefreshHeader.STATE.FAIL){
             return true;
         }
@@ -113,13 +112,13 @@ public class RefreshLinearly extends LinearLayout{
             return false;
 
         if(header.getState() == RefreshHeader.STATE.REFRESHING
-                || header.getState() == RefreshHeader.STATE.SUCESS
+                || header.getState() == RefreshHeader.STATE.SUCCESS
                 || header.getState() == RefreshHeader.STATE.FAIL){
             return false;
         }
 
         if(footer.getState() == RefreshFooter.STATE.LOADING
-                || footer.getState() == RefreshFooter.STATE.SUCESS
+                || footer.getState() == RefreshFooter.STATE.SUCCESS
                 || footer.getState() == RefreshFooter.STATE.FAIL){
             return false;
         }
@@ -145,9 +144,9 @@ public class RefreshLinearly extends LinearLayout{
                     header.setLayoutParams(lp);
 
                     if(lp.topMargin > HEIGHT_HEADER_FOOTER) {
-                        header.setState(RefreshHeader.STATE.RELEASE_TOREFRESH);
+                        header.setState(RefreshHeader.STATE.ARROW_UP);
                     }else{
-                        header.setState(RefreshHeader.STATE.PULL_DOWN);
+                        header.setState(RefreshHeader.STATE.ARROW_DOWN);
                     }
 
                 }else if(STATE.PullUp == state){
@@ -156,10 +155,10 @@ public class RefreshLinearly extends LinearLayout{
                     lp.topMargin = lp.topMargin + yDiff;
                     footer.setLayoutParams(lp);
 
-                    if(-lp.topMargin > HEIGHT_HEADER_FOOTER){
-                        footer.setState(RefreshFooter.STATE.RELEASE_TO_LOAD);
+                    if(-lp.topMargin > 2*HEIGHT_HEADER_FOOTER){
+                        footer.setState(RefreshFooter.STATE.ARROW_DOWN);
                     }else{
-                        footer.setState(RefreshFooter.STATE.PULL_UP);
+                        footer.setState(RefreshFooter.STATE.ARROW_UP);
                     }
 
                     View view = this.getChildAt(this.getChildCount() - 2);
@@ -199,7 +198,7 @@ public class RefreshLinearly extends LinearLayout{
 
                     LayoutParams lp = (LayoutParams) footer.getLayoutParams();
 
-                    if(-lp.topMargin > HEIGHT_HEADER_FOOTER){
+                    if(-lp.topMargin > 2*HEIGHT_HEADER_FOOTER){
 
                         int yScrollDiff = lp.topMargin;
                         mScroller.startScroll(0, yScrollDiff, 0, -yScrollDiff - HEIGHT_HEADER_FOOTER);
@@ -340,8 +339,22 @@ public class RefreshLinearly extends LinearLayout{
                 LayoutParams lp = (LayoutParams) header.getLayoutParams();
                 int yScroll = lp.topMargin;
                 mScroller.startScroll(0, yScroll, 0, -HEIGHT_HEADER_FOOTER);
+                header.setState(RefreshHeader.STATE.ARROW_DOWN);
                 invalidate();
-                header.setState(RefreshHeader.STATE.PULL_DOWN);
+            }
+        },1000);
+    }
+
+    private void resetFooter(){
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                LayoutParams lp = (LayoutParams) footer.getLayoutParams();
+                int yScroll = lp.topMargin;
+                mScroller.startScroll(0, yScroll, 0, -yScroll);
+                footer.setState(RefreshFooter.STATE.ARROW_UP);
+                invalidate();
             }
         },1000);
     }
@@ -353,11 +366,11 @@ public class RefreshLinearly extends LinearLayout{
         LayoutParams lp = (LayoutParams) header.getLayoutParams();
         if(0 == lp.topMargin && enableRefresh){
 
-            header.setState(RefreshHeader.STATE.SUCESS);
+            header.setState(RefreshHeader.STATE.SUCCESS);
             resetHeader();
         }else {
 
-            MLog.e(this, this.getClass().toString() + " - Header is not refreshing now. Cant stopRefreshSuccess.");
+            MLog.e(this, "Header is not refreshing now. Cant stopRefreshSuccess.");
         }
     }
 
@@ -371,21 +384,36 @@ public class RefreshLinearly extends LinearLayout{
             header.setState(RefreshHeader.STATE.FAIL);
             resetHeader();
         }else {
-            MLog.e(this, this.getClass().toString() + " - Header is not refreshing now. Cant stopRefreshFail.");
+            MLog.e(this, "Header is not refreshing now. Cant stopRefreshFail.");
         }
     }
 
-    private void resetFooter(){
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
+    /**
+     * Call this func to stop loading more when you get data successfully.
+     */
+    public void stopLoadMoreSuccess(){
+        LayoutParams lp = (LayoutParams) footer.getLayoutParams();
+        if(-HEIGHT_HEADER_FOOTER == lp.topMargin && enableLoadmore){
 
-                LayoutParams lp = (LayoutParams) header.getLayoutParams();
-                int yScroll = lp.topMargin;
-                mScroller.startScroll(0, yScroll, 0, -HEIGHT_HEADER_FOOTER);
-                invalidate();
-                header.setState(RefreshHeader.STATE.PULL_DOWN);
-            }
-        },1000);
+            footer.setState(RefreshFooter.STATE.SUCCESS);
+            resetFooter();
+        }else {
+
+            MLog.e(this, "Footer is not refreshing now. Cant stopLoadMoreSuccess.");
+        }
+    }
+
+    /**
+     * Call this func to stop refreshing when you fail to get data.
+     */
+    public void stopLoadMoreFail(){
+        LayoutParams lp = (LayoutParams) footer.getLayoutParams();
+        if(-HEIGHT_HEADER_FOOTER == lp.topMargin && enableLoadmore){
+
+            footer.setState(RefreshFooter.STATE.FAIL);
+            resetFooter();
+        }else {
+            MLog.e(this, "Footer is not refreshing now. Cant stopLoadMoreFail.");
+        }
     }
 }

@@ -11,7 +11,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f69224f-dce1-4c6f-8bd3-b73ba54c8114" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mlib/src/main/java/com/nsnv/mlib/MLog.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/nsnv/pulltorefreshlinearlayout/ActMain.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/nsnv/pulltorefreshlinearlayout/ActMain.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mlib/src/main/java/com/nsnv/mlib/RefreshFooter.java" afterPath="$PROJECT_DIR$/mlib/src/main/java/com/nsnv/mlib/RefreshFooter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mlib/src/main/java/com/nsnv/mlib/RefreshHeader.java" afterPath="$PROJECT_DIR$/mlib/src/main/java/com/nsnv/mlib/RefreshHeader.java" />
@@ -41,16 +40,76 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="RefreshLinearly.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RefreshLinearly.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mlib/src/main/java/com/nsnv/mlib/RefreshLinearly.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8529981">
-              <caret line="389" column="5" selection-start-line="389" selection-start-column="5" selection-end-line="389" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="412" column="41" selection-start-line="412" selection-start-column="41" selection-end-line="412" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1770#1850#0" expanded="true" />
-                <element signature="e#10487#10488#0" expanded="true" />
-                <element signature="e#10530#10531#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MProgressCircle.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mlib/src/main/java/com/nsnv/mlib/MProgressCircle.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="351" column="36" selection-start-line="351" selection-start-column="36" selection-end-line="351" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RefreshFooter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mlib/src/main/java/com/nsnv/mlib/RefreshFooter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="refresh_footer.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mlib/src/main/res/layout/refresh_footer.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.814815">
+              <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RefreshHeader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mlib/src/main/java/com/nsnv/mlib/RefreshHeader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="80" column="16" selection-start-line="80" selection-start-column="16" selection-end-line="80" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActMain.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nsnv/pulltorefreshlinearlayout/ActMain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.8897486">
+              <caret line="64" column="19" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1803#2368#0" expanded="true" />
+                <element signature="e#1949#2336#0" expanded="true" />
+                <element signature="e#2335#2336#0" expanded="true" />
+                <element signature="e#2367#2368#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2432,11 +2491,11 @@
         <option value="$PROJECT_DIR$/mlib/src/main/res/layout/refresh_header.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/act_main.xml" />
         <option value="$PROJECT_DIR$/mlib/src/main/java/com/nsnv/mlib/BaseRecyclerAdapter.java" />
-        <option value="$PROJECT_DIR$/mlib/src/main/java/com/nsnv/mlib/RefreshHeader.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/nsnv/pulltorefreshlinearlayout/ActMain.java" />
         <option value="$PROJECT_DIR$/mlib/src/main/java/com/nsnv/mlib/MLog.java" />
+        <option value="$PROJECT_DIR$/mlib/src/main/java/com/nsnv/mlib/RefreshHeader.java" />
         <option value="$PROJECT_DIR$/mlib/src/main/java/com/nsnv/mlib/RefreshFooter.java" />
         <option value="$PROJECT_DIR$/mlib/src/main/java/com/nsnv/mlib/RefreshLinearly.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/nsnv/pulltorefreshlinearlayout/ActMain.java" />
       </list>
     </option>
   </component>
@@ -2878,6 +2937,14 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -2887,14 +2954,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/mlib/src/main/java/com/nsnv/mlib/RefreshLinearly.java</url>
-          <line>98</line>
-          <properties />
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="12" />
     </breakpoint-manager>
     <watches-manager />
@@ -2931,17 +2990,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.388889">
           <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mlib/src/main/res/layout/refresh_footer.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.925926">
-          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
           <folding />
         </state>
       </provider>
@@ -2983,32 +3031,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mlib/src/main/res/layout/refresh_header.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.444445">
-          <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/Library/Android/sdk/extras/android/m2repository/com/android/support/recyclerview-v7/23.1.0/recyclerview-v7-23.1.0-sources.jar!/android/support/v7/widget/RecyclerView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5595" column="26" selection-start-line="5595" selection-start-column="26" selection-end-line="5595" selection-end-column="26" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nsnv/pulltorefreshlinearlayout/ActMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.66924566">
-          <caret line="54" column="47" selection-start-line="54" selection-start-column="47" selection-end-line="54" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3036,28 +3063,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mlib/src/main/java/com/nsnv/mlib/MProgressCircle.java">
+    <entry file="file://$PROJECT_DIR$/mlib/src/main/res/layout/refresh_header.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8665377">
-          <caret line="352" column="49" selection-start-line="352" selection-start-column="49" selection-end-line="352" selection-end-column="49" />
+        <state vertical-scroll-proportion="1.7645788">
+          <caret line="43" column="18" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mlib/src/main/java/com/nsnv/mlib/RefreshHeader.java">
+    <entry file="file://$PROJECT_DIR$/mlib/src/main/res/layout/refresh_footer.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.8375242">
-          <caret line="71" column="23" selection-start-line="71" selection-start-column="8" selection-end-line="71" selection-end-column="23" />
+        <state vertical-scroll-proportion="-4.814815">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mlib/src/main/java/com/nsnv/mlib/RefreshFooter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mlib/src/main/java/com/nsnv/mlib/RefreshFooter.java">
+    <entry file="file://$PROJECT_DIR$/mlib/src/main/java/com/nsnv/mlib/MProgressCircle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.1025145">
-          <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="351" column="36" selection-start-line="351" selection-start-column="36" selection-end-line="351" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mlib/src/main/java/com/nsnv/mlib/RefreshHeader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="80" column="16" selection-start-line="80" selection-start-column="16" selection-end-line="80" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -3066,13 +3115,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mlib/src/main/java/com/nsnv/mlib/RefreshLinearly.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8529981">
-          <caret line="389" column="5" selection-start-line="389" selection-start-column="5" selection-end-line="389" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="412" column="41" selection-start-line="412" selection-start-column="41" selection-end-line="412" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1770#1850#0" expanded="true" />
-            <element signature="e#10487#10488#0" expanded="true" />
-            <element signature="e#10530#10531#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nsnv/pulltorefreshlinearlayout/ActMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8897486">
+          <caret line="64" column="19" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1803#2368#0" expanded="true" />
+            <element signature="e#1949#2336#0" expanded="true" />
+            <element signature="e#2335#2336#0" expanded="true" />
+            <element signature="e#2367#2368#0" expanded="true" />
           </folding>
         </state>
       </provider>

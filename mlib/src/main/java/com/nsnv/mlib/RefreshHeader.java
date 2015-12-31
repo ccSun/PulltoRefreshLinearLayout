@@ -31,10 +31,10 @@ public class RefreshHeader extends FrameLayout {
     private STATE state;
 
     public enum STATE{
-        PULL_DOWN(0),
-        RELEASE_TOREFRESH(1),
+        ARROW_DOWN(0),
+        ARROW_UP(1),
         REFRESHING(2),
-        SUCESS(3),
+        SUCCESS(3),
         FAIL(4);
 
         int VALUE;
@@ -84,13 +84,13 @@ public class RefreshHeader extends FrameLayout {
 
         switch (state){
 
-            case PULL_DOWN:
+            case ARROW_DOWN:
 
                 progress_header.setStateArrowDown();
                 txt_header_state.setText(res.getString(R.string.refresh_header_pulldown));
 
                 break;
-            case RELEASE_TOREFRESH:
+            case ARROW_UP:
 
                 progress_header.setStateArrowUp();
                 txt_header_state.setText(res.getString(R.string.refresh_release));
@@ -102,7 +102,7 @@ public class RefreshHeader extends FrameLayout {
                 txt_header_state.setText(res.getString(R.string.refresh_refreshing));
 
                 break;
-            case SUCESS:
+            case SUCCESS:
 
                 progress_header.setStateSuccess();
                 txt_header_state.setText(res.getString(R.string.refresh_sucess));

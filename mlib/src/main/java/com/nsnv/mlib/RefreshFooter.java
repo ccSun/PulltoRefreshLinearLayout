@@ -19,7 +19,7 @@ public class RefreshFooter extends FrameLayout{
     private Resources res;
     private MProgressCircle progress_circle;
     private TextView txt_footer_state;
-    private STATE mState = STATE.PULL_UP;
+    private STATE mState = STATE.ARROW_UP;
 
 
     public STATE getState() {
@@ -27,10 +27,10 @@ public class RefreshFooter extends FrameLayout{
     }
 
     public enum STATE{
-        PULL_UP(1),
-        RELEASE_TO_LOAD(2),
+        ARROW_UP(1),
+        ARROW_DOWN(2),
         LOADING(3),
-        SUCESS(4),
+        SUCCESS(4),
         FAIL(5);
 
         int VALUE;
@@ -69,13 +69,6 @@ public class RefreshFooter extends FrameLayout{
 
         progress_circle = (MProgressCircle) view.findViewById(R.id.progress_footer);
         txt_footer_state = (TextView) view.findViewById(R.id.txt_footer_state);
-        txt_footer_state.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (STATE.PULL_UP == mState)
-                    setState(STATE.LOADING);
-            }
-        });
 
         res = context.getResources();
     }
@@ -83,36 +76,40 @@ public class RefreshFooter extends FrameLayout{
     public void setState(RefreshFooter.STATE state){
         mState = state;
         switch (state){
-            case PULL_UP:
+            case ARROW_UP:
 
-                progress_circle.setVisibility(GONE);
-                txt_footer_state.setVisibility(VISIBLE);
+                progress_circle.setVisibility(VISIBLE);
+                progress_circle.setStateArrowUp();
+                txt_footer_state.setVisibility(GONE);
                 txt_footer_state.setText(res.getString(R.string.refresh_footer_pullup));
 
                 break;
-            case RELEASE_TO_LOAD:
+            case ARROW_DOWN:
 
-                progress_circle.setVisibility(GONE);
-                txt_footer_state.setVisibility(VISIBLE);
+                progress_circle.setVisibility(VISIBLE);
+                progress_circle.setStateArrowDown();
+                txt_footer_state.setVisibility(GONE);
                 txt_footer_state.setText(res.getString(R.string.refresh_release));
 
                 break;
             case LOADING:
 
                 progress_circle.setVisibility(VISIBLE);
-                txt_footer_state.setVisibility(GONE);
                 progress_circle.setStateLoading();
+                txt_footer_state.setVisibility(GONE);
 
                 break;
-            case SUCESS:
+            case SUCCESS:
 
                 progress_circle.setVisibility(VISIBLE);
+                progress_circle.setStateSuccess();
                 txt_footer_state.setVisibility(GONE);
 
                 break;
             case FAIL:
 
                 progress_circle.setVisibility(VISIBLE);
+                progress_circle.setStateFail();
                 txt_footer_state.setVisibility(GONE);
 
                 break;
