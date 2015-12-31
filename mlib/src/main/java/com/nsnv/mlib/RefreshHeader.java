@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -116,7 +115,7 @@ public class RefreshHeader extends FrameLayout {
 
                 break;
             default:
-                Log.e(this.toString(), "setState no case matched.");
+                MLog.e(this, "setState no case matched.");
         }
     }
 

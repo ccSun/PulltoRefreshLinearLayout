@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -114,7 +113,7 @@ public class RefreshFooter extends FrameLayout{
 
                 break;
             default:
-                Log.e(this.toString(), "RefreshFooter setState no case matched.");
+                MLog.e(this, "RefreshFooter setState no case matched.");
         }
     }
 

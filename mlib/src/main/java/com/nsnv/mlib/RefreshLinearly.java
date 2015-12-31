@@ -91,7 +91,6 @@ public class RefreshLinearly extends LinearLayout{
             case MotionEvent.ACTION_MOVE:
 
                 int yDiff = (int) (event.getRawY() - yLastRecord);
-                MLog.e(this, "=======yDiff" + yDiff);
                 if( yDiff > MOVE_SHAKE && !canChildViewPullDown()) {
                     state = STATE.PullDown;
                     return true;
@@ -223,10 +222,8 @@ public class RefreshLinearly extends LinearLayout{
     @Override
     public void computeScroll() {
 
-            MLog.e(this, "==================" + mScroller.computeScrollOffset());
         if(mScroller.computeScrollOffset()){
             int i = mScroller.getCurrY();
-            MLog.e(this, "===========" + i + " ===" + state);
             if( STATE.PullDown == state){
 
                 LayoutParams lp = (LayoutParams) header.getLayoutParams();
