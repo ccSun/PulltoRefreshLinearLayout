@@ -44,8 +44,6 @@ public class ActMain extends AppCompatActivity {
 
                         list.add(0, "ADD_" + list.size());
                         adapter.notifyItemInserted(0);
-                        recycler_test.scrollToPosition(0);
-
                         refresh_linely.stopRefreshSuccess();
                     }
                 }, 1700);

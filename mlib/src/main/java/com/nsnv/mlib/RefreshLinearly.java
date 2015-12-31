@@ -368,6 +368,12 @@ public class RefreshLinearly extends LinearLayout{
 
             header.setState(RefreshHeader.STATE.SUCCESS);
             resetHeader();
+
+            View view = this.getChildAt(1);
+            if(view instanceof RecyclerView) {
+                ((RecyclerView) view).scrollToPosition(0);
+            }
+
         }else {
 
             MLog.e(this, "Header is not refreshing now. Cant stopRefreshSuccess.");
