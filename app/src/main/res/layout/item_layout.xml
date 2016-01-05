@@ -7,6 +7,7 @@
     card_view:cardMaxElevation="10dp"
     card_view:cardBackgroundColor="#bbaaff"
     card_view:cardCornerRadius="5dp"
+    android:layout_margin="10dp"
     >
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"

@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PulltoRefreshLinearLayout.iml" filepath="$PROJECT_DIR$/PulltoRefreshLinearLayout.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/mlib/mlib.iml" filepath="$PROJECT_DIR$/mlib/mlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libpulltorefreshlinearly/libpulltorefreshlinearly.iml" filepath="$PROJECT_DIR$/libpulltorefreshlinearly/libpulltorefreshlinearly.iml" />
     </modules>
   </component>
 </project>
