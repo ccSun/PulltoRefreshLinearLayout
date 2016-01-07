@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.nsnv.mlib.BaseRecyclerAdapter;
+import com.nsnv.refreshlinearly.BaseRecyclerAdapter;
 
 import java.util.List;
 

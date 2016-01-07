@@ -1,8 +1,10 @@
-package com.nsnv.mlib;
+package com.nsnv.refreshlinearly;
 
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -10,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import com.nsnv.mlib.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,6 +27,7 @@ public class RefreshHeader extends FrameLayout {
     private TextView txt_header_state;
     private TextView txt_header_time;
     private Resources res;
+    private TextView txt_header_last_upate;
 
     public STATE getState() {
         return state;
@@ -45,26 +50,26 @@ public class RefreshHeader extends FrameLayout {
 
     public RefreshHeader(Context context) {
         super(context);
-        init(context);
+        init(context, null);
     }
 
     public RefreshHeader(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context);
+        init(context, attrs);
     }
 
     public RefreshHeader(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context);
+        init(context, attrs);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public RefreshHeader(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        init(context);
+        init(context, attrs);
     }
 
-    private void init(Context context) {
+    private void init(Context context, AttributeSet attr) {
 
         View view = LayoutInflater.from(context).inflate(R.layout.refresh_header, null);
         addView(view);
@@ -72,8 +77,16 @@ public class RefreshHeader extends FrameLayout {
         progress_header = (MProgressCircle) findViewById(R.id.progress_header);
         txt_header_state = (TextView) findViewById(R.id.txt_header_state);
         txt_header_time = (TextView) findViewById(R.id.txt_header_time);
+        txt_header_last_upate = (TextView) findViewById(R.id.txt_header_last_upate);
 
         txt_header_time.setText(new SimpleDateFormat().format(new Date()));
+
+        TypedArray typedArray = context.obtainStyledAttributes(attr, R.styleable.RefreshLinearly);
+        int color = typedArray.getColor(R.styleable.RefreshLinearly_colorShow, Color.BLUE);
+        txt_header_state.setTextColor(color);
+        txt_header_time.setTextColor(color);
+        txt_header_last_upate.setTextColor(color);
+        typedArray.recycle();
 
         res = context.getResources();
     }

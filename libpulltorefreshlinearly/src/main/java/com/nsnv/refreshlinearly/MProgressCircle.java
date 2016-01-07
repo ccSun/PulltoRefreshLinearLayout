@@ -1,10 +1,11 @@
-package com.nsnv.mlib;
+package com.nsnv.refreshlinearly;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -14,6 +15,8 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
+
+import com.nsnv.mlib.R;
 
 /**
  * use function setState***() to change state.
@@ -30,6 +33,8 @@ public class MProgressCircle extends View {
     private RectF rectFArc;
 
     private float MAX_SWEEP_ANGLE = 360 / 1.5f;
+    private Context context;
+    private AttributeSet attr;
 
     //
     public enum STATE{
@@ -53,22 +58,24 @@ public class MProgressCircle extends View {
 
     public MProgressCircle(Context context) {
         super(context);
-        init(context);
+        init(context, null);
 
     }
 
     public MProgressCircle(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context);
+        init(context, attrs);
     }
 
     public MProgressCircle(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context);
+        init(context, attrs);
     }
 
-    private void init(Context context) {
+    private void init(Context context, AttributeSet attr) {
 
+        this.context = context;
+        this.attr = attr;
         initDefSetting();
 
     }
@@ -82,7 +89,10 @@ public class MProgressCircle extends View {
 
         paintDraw = new Paint();
         paintDraw.setAntiAlias(true);
-        paintDraw.setColor(Color.BLUE);
+        TypedArray typedArray = context.obtainStyledAttributes(attr, R.styleable.RefreshLinearly);
+        int colorShow = typedArray.getColor(R.styleable.RefreshLinearly_colorShow, Color.BLUE);
+        paintDraw.setColor(colorShow);
+        typedArray.recycle();
         paintDraw.setStyle(Paint.Style.STROKE);
         paintDraw.setStrokeWidth(paintWidth > 20 ? 20 : paintWidth);
         paintDraw.setStrokeCap(Paint.Cap.ROUND);

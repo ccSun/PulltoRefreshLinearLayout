@@ -27,6 +27,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/txt_header_last_upate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/refresh_header_time"
@@ -41,7 +42,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <com.nsnv.mlib.MProgressCircle
+    <com.nsnv.refreshlinearly.MProgressCircle
         android:id="@+id/progress_header"
         android:layout_width="@dimen/refresh_header_footer_progresscircle"
         android:layout_height="@dimen/refresh_header_footer_progresscircle"
