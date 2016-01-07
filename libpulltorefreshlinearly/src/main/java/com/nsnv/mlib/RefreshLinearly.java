@@ -1,6 +1,8 @@
 package com.nsnv.mlib;
 
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
@@ -57,16 +59,17 @@ public class RefreshLinearly extends LinearLayout{
 
     private void init(Context context, AttributeSet attrs) {
 
-        header = new RefreshHeader(context);
+        header = new RefreshHeader(context, attrs);
         LayoutParams lp = new LinearLayout.LayoutParams(context, attrs);
         lp.gravity = Gravity.CENTER;
         HEIGHT_HEADER_FOOTER = context.getResources().getDimensionPixelSize(R.dimen.refresh_header_footer_size);
         lp.topMargin = -HEIGHT_HEADER_FOOTER;
         addView(header, lp);
 
-        footer = new RefreshFooter(context);
+        footer = new RefreshFooter(context, attrs);
 
         mScroller = new Scroller(context);
+
     }
 
 

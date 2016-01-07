@@ -46,10 +46,10 @@ public class RefreshHeader extends FrameLayout {
         }
     }
 
-    public RefreshHeader(Context context) {
-        super(context);
-        init(context, null);
-    }
+//    public RefreshHeader(Context context) {
+//        super(context);
+//        init(context, null);
+//    }
 
     public RefreshHeader(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -84,6 +84,7 @@ public class RefreshHeader extends FrameLayout {
         txt_header_state.setTextColor(color);
         txt_header_time.setTextColor(color);
         txt_header_last_upate.setTextColor(color);
+        progress_header.setColor(color);
         typedArray.recycle();
 
         res = context.getResources();

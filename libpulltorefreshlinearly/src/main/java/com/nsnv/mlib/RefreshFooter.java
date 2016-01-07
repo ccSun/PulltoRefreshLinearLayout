@@ -42,10 +42,10 @@ public class RefreshFooter extends FrameLayout{
         }
     }
 
-    public RefreshFooter(Context context) {
-        super(context);
-        init(context, null);
-    }
+//    public RefreshFooter(Context context) {
+//        super(context);
+//        init(context, null);
+//    }
 
     public RefreshFooter(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -75,6 +75,7 @@ public class RefreshFooter extends FrameLayout{
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RefreshLinearly);
         int color = typedArray.getColor(R.styleable.RefreshLinearly_colorShow, Color.BLUE);
         txt_footer_state.setTextColor(color);
+        progress_circle.setColor(color);
         typedArray.recycle();
 
         res = context.getResources();

@@ -33,6 +33,7 @@ public class MProgressCircle extends View {
     private float MAX_SWEEP_ANGLE = 360 / 1.5f;
     private Context context;
     private AttributeSet attr;
+    private int colorShow = 0;
 
     //
     public enum STATE{
@@ -87,10 +88,7 @@ public class MProgressCircle extends View {
 
         paintDraw = new Paint();
         paintDraw.setAntiAlias(true);
-        TypedArray typedArray = context.obtainStyledAttributes(attr, R.styleable.RefreshLinearly);
-        int colorShow = typedArray.getColor(R.styleable.RefreshLinearly_colorShow, Color.BLUE);
-        paintDraw.setColor(colorShow);
-        typedArray.recycle();
+        paintDraw.setColor(colorShow==0 ? Color.BLUE:colorShow);
         paintDraw.setStyle(Paint.Style.STROKE);
         paintDraw.setStrokeWidth(paintWidth > 20 ? 20 : paintWidth);
         paintDraw.setStrokeCap(Paint.Cap.ROUND);
@@ -360,5 +358,9 @@ public class MProgressCircle extends View {
     public void setFractionArcAngle(float fractionArcAngle) {
         this.fractionArcAngle = fractionArcAngle;
         invalidate();
+    }
+
+    public void setColor(int color){
+        this.colorShow = color;
     }
 }
