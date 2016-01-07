@@ -1,4 +1,4 @@
-package com.nsnv.refreshlinearly;
+package com.nsnv.mlib;
 
 import android.content.Context;
 import android.os.Handler;
@@ -10,8 +10,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Scroller;
-
-import com.nsnv.mlib.R;
 
 /**
  * Default enable pulling down refreshing.

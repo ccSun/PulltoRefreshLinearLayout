@@ -7,7 +7,7 @@
     tools:context="com.nsnv.pulltorefreshlinearlayout.ActMain"
     >
 
-    <com.nsnv.refreshlinearly.RefreshLinearly
+    <com.nsnv.mlib.RefreshLinearly
         android:id="@+id/refresh_linely"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,6 +21,6 @@
             android:layout_height="match_parent">
 
         </android.support.v7.widget.RecyclerView>
-    </com.nsnv.refreshlinearly.RefreshLinearly>
+    </com.nsnv.mlib.RefreshLinearly>
 
 </RelativeLayout>

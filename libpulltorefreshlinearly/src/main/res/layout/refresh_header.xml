@@ -42,7 +42,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <com.nsnv.refreshlinearly.MProgressCircle
+    <com.nsnv.mlib.MProgressCircle
         android:id="@+id/progress_header"
         android:layout_width="@dimen/refresh_header_footer_progresscircle"
         android:layout_height="@dimen/refresh_header_footer_progresscircle"

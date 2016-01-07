@@ -1,4 +1,4 @@
-package com.nsnv.refreshlinearly;
+package com.nsnv.mlib;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -12,8 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-
-import com.nsnv.mlib.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

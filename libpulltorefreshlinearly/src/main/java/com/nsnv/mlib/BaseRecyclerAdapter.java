@@ -1,4 +1,4 @@
-package com.nsnv.refreshlinearly;
+package com.nsnv.mlib;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;

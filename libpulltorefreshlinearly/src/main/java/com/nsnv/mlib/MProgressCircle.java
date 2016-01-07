@@ -1,4 +1,4 @@
-package com.nsnv.refreshlinearly;
+package com.nsnv.mlib;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -15,8 +15,6 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
-
-import com.nsnv.mlib.R;
 
 /**
  * use function setState***() to change state.
