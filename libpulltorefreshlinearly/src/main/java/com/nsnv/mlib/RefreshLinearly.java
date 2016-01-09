@@ -76,13 +76,20 @@ public class RefreshLinearly extends LinearLayout{
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
 
-        if(!enableRefresh)
+
+        if(!enableRefresh && !enableLoadmore)
             return false;
 
         if(header.getState() == RefreshHeader.STATE.REFRESHING
                 || header.getState() == RefreshHeader.STATE.SUCCESS
                 || header.getState() == RefreshHeader.STATE.FAIL){
-            return true;
+            return false;
+        }
+
+        if(footer.getState() == RefreshFooter.STATE.LOADING
+                || footer.getState() == RefreshFooter.STATE.SUCCESS
+                || footer.getState() == RefreshFooter.STATE.FAIL){
+            return false;
         }
 
         switch (event.getAction()){
@@ -282,12 +289,12 @@ public class RefreshLinearly extends LinearLayout{
                 int scrollOffset = recyclerView.computeVerticalScrollOffset();
                 int scrollRange = recyclerView.computeVerticalScrollRange();
                 int scrollExtent = recyclerView.computeVerticalScrollExtent();
-                if((scrollOffset+scrollExtent) == scrollRange)
+                if((scrollOffset+scrollExtent) >= scrollRange)
                     return false;
             }else if(viewChild instanceof ScrollView){
 
                 ScrollView scrollView = (ScrollView)viewChild;
-                if((scrollView.getChildAt(0).getMeasuredHeight()) == (scrollView.getHeight() + scrollView.getScrollY()))
+                if((scrollView.getChildAt(0).getMeasuredHeight()) <= (scrollView.getHeight() + scrollView.getScrollY()))
                     return false;
             }
         }
