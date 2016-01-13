@@ -334,7 +334,7 @@ public class MProgressCircle extends View {
     private ObjectAnimator getAnimArrowLength(){
         if(null == animatorArrowLength) {
             animatorArrowLength = ObjectAnimator.ofFloat(this, "fractionArrowLength", 0, 1);
-            animatorArrowLength.setDuration(500);
+            animatorArrowLength.setDuration(200);
             animatorArrowLength.setInterpolator(new AccelerateDecelerateInterpolator());
         }
         return animatorArrowLength;
