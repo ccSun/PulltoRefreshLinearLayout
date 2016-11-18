@@ -36,14 +36,9 @@ public class RefreshLinearly extends LinearLayout{
     private OnLoadMoreListener loadmoreListener;
 
     private enum STATE{
-        Normal(0),
-        PullDown(1),
-        PullUp(2);
-
-        int value;
-        STATE(int i) {
-            this.value = i;
-        }
+        Normal,
+        PullDown,
+        PullUp;
     }
     private STATE state;
 
@@ -59,7 +54,7 @@ public class RefreshLinearly extends LinearLayout{
 
     private void init(Context context, AttributeSet attrs) {
 
-        header = new RefreshHeader(context, attrs);
+        header = new RefreshHeaderMy(context, attrs);
         LayoutParams lp = new LinearLayout.LayoutParams(context, attrs);
         lp.gravity = Gravity.CENTER;
         HEIGHT_HEADER_FOOTER = context.getResources().getDimensionPixelSize(R.dimen.refresh_header_footer_size);
@@ -80,9 +75,9 @@ public class RefreshLinearly extends LinearLayout{
         if(!enableRefresh && !enableLoadmore)
             return false;
 
-        if(header.getState() == RefreshHeader.STATE.REFRESHING
-                || header.getState() == RefreshHeader.STATE.SUCCESS
-                || header.getState() == RefreshHeader.STATE.FAIL){
+        if(header.getState() == RefreshStateI.State.RefreshIng
+                || header.getState() == RefreshStateI.State.RefreshSuccess
+                || header.getState() == RefreshStateI.State.RefreshFail){
             return false;
         }
 
@@ -120,9 +115,9 @@ public class RefreshLinearly extends LinearLayout{
         if(!enableRefresh && !enableLoadmore)
             return false;
 
-        if(header.getState() == RefreshHeader.STATE.REFRESHING
-                || header.getState() == RefreshHeader.STATE.SUCCESS
-                || header.getState() == RefreshHeader.STATE.FAIL){
+        if(header.getState() == RefreshStateI.State.RefreshIng
+                || header.getState() == RefreshStateI.State.RefreshSuccess
+                || header.getState() == RefreshStateI.State.RefreshFail){
             return false;
         }
 
@@ -153,9 +148,9 @@ public class RefreshLinearly extends LinearLayout{
                     header.setLayoutParams(lp);
 
                     if(lp.topMargin > HEIGHT_HEADER_FOOTER) {
-                        header.setState(RefreshHeader.STATE.ARROW_UP);
+                        header.setStatePullUp();
                     }else{
-                        header.setState(RefreshHeader.STATE.ARROW_DOWN);
+                        header.setStatePullDown();
                     }
 
                 }else if(STATE.PullUp == state){
@@ -192,7 +187,7 @@ public class RefreshLinearly extends LinearLayout{
                         int yScroll = lp.topMargin;
                         mScroller.startScroll(0, yScroll, 0, -yScroll);
 
-                        header.setState(RefreshHeader.STATE.REFRESHING);
+                        header.setStateRefreshIng();
                         if(null == refreshListener)
                             throw new NullPointerException(this.getClass().toString() + " - you havent register an OnRefreshListener.");
                         refreshListener.onRefresh();
@@ -350,7 +345,7 @@ public class RefreshLinearly extends LinearLayout{
                 LayoutParams lp = (LayoutParams) header.getLayoutParams();
                 int yScroll = lp.topMargin;
                 mScroller.startScroll(0, yScroll, 0, -HEIGHT_HEADER_FOOTER);
-                header.setState(RefreshHeader.STATE.ARROW_DOWN);
+                header.setStatePullDown();
                 invalidate();
             }
         },1000);
@@ -377,7 +372,7 @@ public class RefreshLinearly extends LinearLayout{
         LayoutParams lp = (LayoutParams) header.getLayoutParams();
         if(0 == lp.topMargin && enableRefresh){
 
-            header.setState(RefreshHeader.STATE.SUCCESS);
+            header.setStateRefreshSuccess();
             resetHeader();
 
             View view = this.getChildAt(1);
@@ -398,7 +393,7 @@ public class RefreshLinearly extends LinearLayout{
         LayoutParams lp = (LayoutParams) header.getLayoutParams();
         if(0 == lp.topMargin && enableRefresh){
 
-            header.setState(RefreshHeader.STATE.FAIL);
+            header.setStateRefreshFail();
             resetHeader();
         }else {
             MLog.e(this, "Header is not refreshing now. Cant stopRefreshFail.");

@@ -87,7 +87,7 @@ public class RefreshFooter extends FrameLayout{
             case ARROW_UP:
 
                 progress_circle.setVisibility(VISIBLE);
-                progress_circle.setStateArrowUp();
+                progress_circle.setStatePullUp();
                 txt_footer_state.setVisibility(GONE);
                 txt_footer_state.setText(res.getString(R.string.refresh_footer_pullup));
 
@@ -95,7 +95,7 @@ public class RefreshFooter extends FrameLayout{
             case ARROW_DOWN:
 
                 progress_circle.setVisibility(VISIBLE);
-                progress_circle.setStateArrowDown();
+                progress_circle.setStatePullDown();
                 txt_footer_state.setVisibility(GONE);
                 txt_footer_state.setText(res.getString(R.string.refresh_release));
 
@@ -103,21 +103,21 @@ public class RefreshFooter extends FrameLayout{
             case LOADING:
 
                 progress_circle.setVisibility(VISIBLE);
-                progress_circle.setStateLoading();
+                progress_circle.setStateRefreshIng();
                 txt_footer_state.setVisibility(GONE);
 
                 break;
             case SUCCESS:
 
                 progress_circle.setVisibility(VISIBLE);
-                progress_circle.setStateSuccess();
+                progress_circle.setStateRefreshSuccess();
                 txt_footer_state.setVisibility(GONE);
 
                 break;
             case FAIL:
 
                 progress_circle.setVisibility(VISIBLE);
-                progress_circle.setStateFail();
+                progress_circle.setStateRefreshFail();
                 txt_footer_state.setVisibility(GONE);
 
                 break;

@@ -5,7 +5,6 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -17,10 +16,12 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 
 /**
- * use function setState***() to change state.
+ * <p/>
+ * 1. use function setState***() to change state.
+ * <p/>
+ * 2. use function setColor(int color) to change circle color.
  */
-
-public class MProgressCircle extends View {
+public class MProgressCircle extends View implements RefreshStateI {
 
     private Paint paintDraw;
 
@@ -31,26 +32,9 @@ public class MProgressCircle extends View {
     private RectF rectFArc;
 
     private float MAX_SWEEP_ANGLE = 360 / 1.5f;
-    private Context context;
-    private AttributeSet attr;
     private int colorShow = 0;
 
-    //
-    public enum STATE{
-        ARROW_DOWN(1),
-        ARROW_UP(2),
-        LOADING(3),
-        SUCCESS(4),
-        FAIL(5);
-
-        private int VALUE;
-
-         STATE(int i) {
-             VALUE = i;
-        }
-
-    }
-    private int state = STATE.ARROW_DOWN.VALUE;
+    private State stateCurrent = State.PullDown;
 
     private float fractionArrowLength = 1;
     private float fractionArcAngle = 0;
@@ -72,11 +56,7 @@ public class MProgressCircle extends View {
     }
 
     private void init(Context context, AttributeSet attr) {
-
-        this.context = context;
-        this.attr = attr;
         initDefSetting();
-
     }
 
     private void initDefSetting(){
@@ -92,6 +72,67 @@ public class MProgressCircle extends View {
         paintDraw.setStyle(Paint.Style.STROKE);
         paintDraw.setStrokeWidth(paintWidth > 20 ? 20 : paintWidth);
         paintDraw.setStrokeCap(Paint.Cap.ROUND);
+    }
+
+    @Override
+    public void setStatePullDown() {
+
+        if(State.PullDown != stateCurrent){
+
+            stateCurrent = State.PullDown;
+            getAnimArrowLength().start();
+        }
+    }
+
+    @Override
+    public void setStatePullUp() {
+
+        if(State.PullUp != stateCurrent){
+
+            stateCurrent = State.PullUp;
+            getAnimArrowLength().start();
+        }
+    }
+
+    @Override
+    public void setStateRefreshIng() {
+        if(State.RefreshIng != stateCurrent){
+
+            stateCurrent = State.RefreshIng;
+            getAnimArrowLength().addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    animation.removeAllListeners();
+                    getAnimArcAngle().setRepeatCount(Animation.INFINITE);
+                    getAnimArcAngle().setRepeatMode(ValueAnimator.RESTART);
+                    getAnimArcAngle().start();
+                    super.onAnimationEnd(animation);
+                }
+            });
+            getAnimArrowLength().start();
+        }
+
+    }
+
+    @Override
+    public void setStateRefreshSuccess() {
+        if( State.RefreshSuccess != stateCurrent){
+
+            stateCurrent = State.RefreshSuccess;
+            getAnimArcAngle().cancel();
+            getAnimArrowLength().start();
+        }
+
+    }
+
+    @Override
+    public void setStateRefreshFail() {
+        if( State.RefreshFail != stateCurrent){
+
+            stateCurrent = State.RefreshFail;
+            getAnimArrowLength().start();
+        }
+
     }
 
     @Override
@@ -123,7 +164,7 @@ public class MProgressCircle extends View {
         float stopX;
         float stopY;
 
-        if(STATE.ARROW_DOWN.VALUE == state) {
+        if(State.PullDown == stateCurrent) {
 
             // clear up
             startX = arrowHeight / 2 - arrowLength * (1 - fractionArrowLength);
@@ -148,7 +189,7 @@ public class MProgressCircle extends View {
             stopX = startX + arrowLength * fractionArrowLength;
             canvas.drawLine(startX, startY, stopX, stopY, paintDraw);
 
-        }else if(STATE.ARROW_UP.VALUE == state) {
+        }else if(State.PullUp == stateCurrent) {
 
             // clear down
             startX = arrowHeight / 2 - arrowLength * (1 - fractionArrowLength);
@@ -173,7 +214,7 @@ public class MProgressCircle extends View {
             stopX = startX + arrowLength * fractionArrowLength;
             canvas.drawLine(startX, startY, stopX, stopY, paintDraw);
 
-        }else if(STATE.LOADING.VALUE == state) {
+        }else if(State.RefreshIng == stateCurrent) {
 
             float ratio = arrowLength / (arrowLength + arrowHeight);
             if(fractionArrowLength < ratio) {
@@ -211,7 +252,7 @@ public class MProgressCircle extends View {
                 canvas.drawArc(rectFArc, startAngle, MAX_SWEEP_ANGLE, false, paintDraw);
                 paintDraw.setStyle(Paint.Style.FILL);
             }
-        }else if(STATE.SUCCESS.VALUE == state){
+        }else if(State.RefreshSuccess == stateCurrent){
 
             paintDraw.setStyle(Paint.Style.STROKE);
             canvas.drawArc(rectFArc, 0, 360, false, paintDraw);
@@ -246,7 +287,7 @@ public class MProgressCircle extends View {
             }
 
 
-        }else if(STATE.FAIL.VALUE == state){
+        }else if(State.RefreshFail == stateCurrent){
 
             paintDraw.setStyle(Paint.Style.STROKE);
             canvas.drawArc(rectFArc, 0, 360, false, paintDraw);
@@ -278,57 +319,6 @@ public class MProgressCircle extends View {
         }
     }
 
-
-    public void setStateArrowDown(){
-        if(STATE.ARROW_DOWN.VALUE != state){
-
-            state = STATE.ARROW_DOWN.VALUE;
-            getAnimArrowLength().start();
-        }
-    }
-
-    public void setStateArrowUp(){
-        if(STATE.ARROW_UP.VALUE != state){
-
-            state = STATE.ARROW_UP.VALUE;
-            getAnimArrowLength().start();
-        }
-    }
-
-    public void setStateLoading(){
-        if(STATE.LOADING.VALUE != state){
-
-            state = STATE.LOADING.VALUE;
-            getAnimArrowLength().addListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    animation.removeAllListeners();
-                    getAnimArcAngle().setRepeatCount(Animation.INFINITE);
-                    getAnimArcAngle().setRepeatMode(ValueAnimator.RESTART);
-                    getAnimArcAngle().start();
-                    super.onAnimationEnd(animation);
-                }
-            });
-            getAnimArrowLength().start();
-        }
-    }
-
-    public void setStateSuccess(){
-        if( STATE.SUCCESS.VALUE != state){
-
-            state = STATE.SUCCESS.VALUE;
-            getAnimArcAngle().cancel();
-            getAnimArrowLength().start();
-        }
-    }
-
-    public void setStateFail(){
-        if( STATE.FAIL.VALUE != state){
-
-            state = STATE.FAIL.VALUE;
-            getAnimArrowLength().start();;
-        }
-    }
 
     private ObjectAnimator animatorArrowLength;
     private ObjectAnimator getAnimArrowLength(){

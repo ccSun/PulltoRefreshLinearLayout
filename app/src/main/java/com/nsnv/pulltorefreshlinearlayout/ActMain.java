@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.nsnv.mlib.RefreshHeaderMy;
 import com.nsnv.mlib.RefreshLinearly;
 
 import java.util.ArrayList;
