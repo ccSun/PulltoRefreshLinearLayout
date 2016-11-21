@@ -1,4 +1,4 @@
-package com.nsnv.mlib;
+package com.nsnv.pulltorefreshlinearlayout;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -10,6 +10,9 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+
+import com.nsnv.mlib.MProgressCircle;
+import com.nsnv.mlib.RefreshBase;
 
 /**
  *
@@ -45,13 +48,13 @@ public class RefreshFooterMy extends RefreshBase {
     private void init(Context context, AttributeSet attrs) {
         this.cxt = context;
 
-        View view = LayoutInflater.from(cxt).inflate(R.layout.refresh_footer, null);
+        View view = LayoutInflater.from(cxt).inflate(com.nsnv.mlib.R.layout.refresh_footer, null);
         addView(view);
 
-        progress_circle = (MProgressCircle) view.findViewById(R.id.progress_footer);
-        txt_footer_state = (TextView) view.findViewById(R.id.txt_footer_state);
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RefreshLinearly);
-        int color = typedArray.getColor(R.styleable.RefreshLinearly_colorShow, Color.BLUE);
+        progress_circle = (MProgressCircle) view.findViewById(com.nsnv.mlib.R.id.progress_footer);
+        txt_footer_state = (TextView) view.findViewById(com.nsnv.mlib.R.id.txt_footer_state);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, com.nsnv.mlib.R.styleable.RefreshLinearly);
+        int color = typedArray.getColor(com.nsnv.mlib.R.styleable.RefreshLinearly_colorShow, Color.BLUE);
         txt_footer_state.setTextColor(color);
         progress_circle.setColor(color);
         typedArray.recycle();
@@ -64,7 +67,7 @@ public class RefreshFooterMy extends RefreshBase {
         progress_circle.setVisibility(VISIBLE);
         progress_circle.setStatePullDownI();
         txt_footer_state.setVisibility(GONE);
-        txt_footer_state.setText(res.getString(R.string.refresh_release));
+        txt_footer_state.setText(res.getString(com.nsnv.mlib.R.string.refresh_release));
     }
 
     @Override
@@ -72,7 +75,7 @@ public class RefreshFooterMy extends RefreshBase {
         progress_circle.setVisibility(VISIBLE);
         progress_circle.setStatePullUpI();
         txt_footer_state.setVisibility(GONE);
-        txt_footer_state.setText(res.getString(R.string.refresh_footer_pullup));
+        txt_footer_state.setText(res.getString(com.nsnv.mlib.R.string.refresh_footer_pullup));
     }
 
     @Override

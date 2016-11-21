@@ -1,4 +1,4 @@
-package com.nsnv.mlib;
+package com.nsnv.pulltorefreshlinearlayout;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;

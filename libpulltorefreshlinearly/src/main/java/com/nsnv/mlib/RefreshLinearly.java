@@ -26,7 +26,7 @@ public class RefreshLinearly extends LinearLayout{
 
     private int HEIGHT_HEADER_FOOTER;
     private RefreshBase header;
-    private RefreshFooterMy footer;
+    private RefreshBase footer;
 
     private int yLastRecord = -1;
     private Scroller mScroller;
@@ -378,7 +378,7 @@ public class RefreshLinearly extends LinearLayout{
 
         }else {
 
-            MLog.e(this, "Header is not refreshing now. Cant stopRefreshSuccess.");
+            android.util.Log.e("stopRefreshSuccess", "Header is not refreshing now. Cant stopRefreshSuccess.");
         }
     }
 
@@ -392,7 +392,7 @@ public class RefreshLinearly extends LinearLayout{
             header.setStateRefreshFailI();
             resetHeader();
         }else {
-            MLog.e(this, "Header is not refreshing now. Cant stopRefreshFail.");
+            android.util.Log.e("stopRefreshFail", "Header is not refreshing now. Cant stopRefreshFail.");
         }
     }
 
@@ -411,7 +411,7 @@ public class RefreshLinearly extends LinearLayout{
         this.loadmoreListener = listener;
     }
 
-    public void setFooter(Context context, RefreshFooterMy footer){
+    public void setFooter(Context context, RefreshBase footer){
 
         if(null != footer)
             removeView(footer);
@@ -435,7 +435,7 @@ public class RefreshLinearly extends LinearLayout{
             resetFooter();
         }else {
 
-            MLog.e(this, "Footer is not refreshing now. Cant stopLoadMoreSuccess.");
+            android.util.Log.e("stopLoadMoreSuccess", "Footer is not refreshing now. Cant stopLoadMoreSuccess.");
         }
     }
 
@@ -449,7 +449,7 @@ public class RefreshLinearly extends LinearLayout{
             footer.setStateRefreshFailI();
             resetFooter();
         }else {
-            MLog.e(this, "Footer is not refreshing now. Cant stopLoadMoreFail.");
+            android.util.Log.e("stopLoadMoreFail", "Footer is not refreshing now. Cant stopLoadMoreFail.");
         }
     }
 }

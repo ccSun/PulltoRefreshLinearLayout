@@ -10,16 +10,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12c1cc13-3029-4c7b-8ee3-0ba75a8bdabb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshBase.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshFooterMy.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshFooter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshHeader.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_23_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/cardview_v7_23_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/hamcrest_core_1_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/junit_4_12.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_23_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_23_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_23_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/MLog.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/BaseRecyclerAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/nsnv/pulltorefreshlinearlayout/BaseRecyclerAdapter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshFooterMy.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/nsnv/pulltorefreshlinearlayout/RefreshFooterMy.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshHeaderMy.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/nsnv/pulltorefreshlinearlayout/RefreshHeaderMy.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/nsnv/pulltorefreshlinearlayout/ActMain.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/nsnv/pulltorefreshlinearlayout/ActMain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/MProgressCircle.java" afterPath="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/MProgressCircle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshHeaderMy.java" afterPath="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshHeaderMy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/nsnv/pulltorefreshlinearlayout/MRecyclerAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/nsnv/pulltorefreshlinearlayout/MRecyclerAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshLinearly.java" afterPath="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshLinearly.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshStateI.java" afterPath="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshStateI.java" />
     </list>
     <ignored path="PulltoRefreshLinearLayout.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,43 +64,18 @@
       <file leaf-file-name="RefreshLinearly.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshLinearly.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6138">
-              <caret line="453" column="5" selection-start-line="453" selection-start-column="5" selection-end-line="453" selection-end-column="5" />
+            <state relative-caret-position="7326">
+              <caret line="421" column="50" selection-start-line="421" selection-start-column="50" selection-end-line="421" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ActMain.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nsnv/pulltorefreshlinearlayout/ActMain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="51" column="21" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="21" />
-              <folding>
-                <element signature="e#1502#1804#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RefreshBase.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshBase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-              <folding>
-                <element signature="e#424#425#0" expanded="true" />
-                <element signature="e#459#460#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MProgressCircle.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/MProgressCircle.java">
+      <file leaf-file-name="RefreshFooterMy.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nsnv/pulltorefreshlinearlayout/RefreshFooterMy.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="324">
-              <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
+              <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -107,29 +87,6 @@
             <state relative-caret-position="378">
               <caret line="21" column="29" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RefreshHeaderMy.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshHeaderMy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="52" column="23" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RefreshFooterMy.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshFooterMy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="666">
-              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-              <folding>
-                <element signature="e#2144#2183#0" expanded="true" />
-                <element signature="e#2412#2457#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -2544,7 +2501,6 @@
         <option value="$PROJECT_DIR$/app/build/intermediates/exploded-aar/PulltoRefreshLinearLayout/mlib/unspecified/res/layout/refresh_header.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/act_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/nsnv/pulltorefreshlinearlayout/ActMain.java" />
-        <option value="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshLinearly.java" />
         <option value="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshStateI.java" />
         <option value="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshFooter.java" />
         <option value="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshHeader.java" />
@@ -2554,6 +2510,7 @@
         <option value="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/MProgressCircle.java" />
         <option value="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshStateBase.java" />
         <option value="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshBase.java" />
+        <option value="$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshLinearly.java" />
       </list>
     </option>
   </component>
@@ -2587,6 +2544,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="AndroidView">
+        <subPane />
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2775,12 +2736,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="AndroidView">
-        <subPane />
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2799,6 +2756,9 @@
     <property name="DEBUGGER_ID" value="Auto" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.nsnv.pulltorefreshlinearlayout" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.nsnv.mlib" />
     </key>
@@ -3167,7 +3127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1479708232539</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="实现header和footer的总抽象类">
+      <created>1479710286924</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1479710286924</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -3225,7 +3192,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="修改header和circle状态通过接口实现" />
     <MESSAGE value="下拉刷新布局支持自定义header" />
-    <option name="LAST_COMMIT_MESSAGE" value="下拉刷新布局支持自定义header" />
+    <MESSAGE value="实现header和footer的总抽象类" />
+    <option name="LAST_COMMIT_MESSAGE" value="实现header和footer的总抽象类" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3242,6 +3210,30 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshLinearly.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7326">
+          <caret line="421" column="50" selection-start-line="421" selection-start-column="50" selection-end-line="421" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nsnv/pulltorefreshlinearlayout/RefreshFooterMy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshStateI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="29" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshLinearly.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -3262,62 +3254,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="107">
           <caret line="269" column="55" selection-start-line="269" selection-start-column="55" selection-end-line="269" selection-end-column="55" />
-          <folding>
-            <element signature="e#8599#8600#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshLinearly.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6138">
-          <caret line="453" column="5" selection-start-line="453" selection-start-column="5" selection-end-line="453" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshFooter.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nsnv/pulltorefreshlinearlayout/ActMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
           <caret line="51" column="21" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="21" />
           <folding>
-            <element signature="e#1502#1804#0" expanded="true" />
+            <element signature="e#1426#1728#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshStateI.java">
+    <entry file="file://$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="29" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshFooter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1134">
-          <caret line="73" column="47" selection-start-line="73" selection-start-column="47" selection-end-line="73" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshFooterMy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+        <state relative-caret-position="126">
+          <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
           <folding>
-            <element signature="e#2144#2183#0" expanded="true" />
-            <element signature="e#2412#2457#0" expanded="true" />
+            <element signature="e#424#425#0" expanded="true" />
+            <element signature="e#459#460#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshHeaderMy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="52" column="23" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3329,14 +3288,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshBase.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nsnv/pulltorefreshlinearlayout/RefreshHeaderMy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding>
-            <element signature="e#424#425#0" expanded="true" />
-            <element signature="e#459#460#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="108">
+          <caret line="52" column="23" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshStateI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="29" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libpulltorefreshlinearly/src/main/java/com/nsnv/mlib/RefreshLinearly.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7326">
+          <caret line="421" column="50" selection-start-line="421" selection-start-column="50" selection-end-line="421" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/nsnv/pulltorefreshlinearlayout/RefreshFooterMy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>

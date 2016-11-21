@@ -1,4 +1,4 @@
-package com.nsnv.mlib;
+package com.nsnv.pulltorefreshlinearlayout;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -10,6 +10,9 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+
+import com.nsnv.mlib.MProgressCircle;
+import com.nsnv.mlib.RefreshBase;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,18 +50,18 @@ public class RefreshHeaderMy extends RefreshBase {
 
     private void init(Context context, AttributeSet attr) {
 
-        View view = LayoutInflater.from(context).inflate(R.layout.refresh_header, null);
+        View view = LayoutInflater.from(context).inflate(com.nsnv.mlib.R.layout.refresh_header, null);
         addView(view);
 
-        progress_header = (MProgressCircle) findViewById(R.id.progress_header);
-        txt_header_state = (TextView) findViewById(R.id.txt_header_state);
-        txt_header_time = (TextView) findViewById(R.id.txt_header_time);
-        TextView txt_header_last_upate = (TextView) findViewById(R.id.txt_header_last_upate);
+        progress_header = (MProgressCircle) findViewById(com.nsnv.mlib.R.id.progress_header);
+        txt_header_state = (TextView) findViewById(com.nsnv.mlib.R.id.txt_header_state);
+        txt_header_time = (TextView) findViewById(com.nsnv.mlib.R.id.txt_header_time);
+        TextView txt_header_last_upate = (TextView) findViewById(com.nsnv.mlib.R.id.txt_header_last_upate);
 
         txt_header_time.setText(new SimpleDateFormat().format(new Date()));
 
-        TypedArray typedArray = context.obtainStyledAttributes(attr, R.styleable.RefreshLinearly);
-        int color = typedArray.getColor(R.styleable.RefreshLinearly_colorShow, Color.BLUE);
+        TypedArray typedArray = context.obtainStyledAttributes(attr, com.nsnv.mlib.R.styleable.RefreshLinearly);
+        int color = typedArray.getColor(com.nsnv.mlib.R.styleable.RefreshLinearly_colorShow, Color.BLUE);
         txt_header_state.setTextColor(color);
         txt_header_time.setTextColor(color);
         txt_header_last_upate.setTextColor(color);
@@ -72,31 +75,31 @@ public class RefreshHeaderMy extends RefreshBase {
     @Override
     public void setStatePullDown() {
         progress_header.setStatePullDownI();
-        txt_header_state.setText(res.getString(R.string.refresh_header_pulldown));
+        txt_header_state.setText(res.getString(com.nsnv.mlib.R.string.refresh_header_pulldown));
     }
 
     @Override
     public void setStatePullUp() {
         progress_header.setStatePullUpI();
-        txt_header_state.setText(res.getString(R.string.refresh_release));
+        txt_header_state.setText(res.getString(com.nsnv.mlib.R.string.refresh_release));
     }
 
     @Override
     public void setStateRefreshIng() {
         progress_header.setStateRefreshIngI();
-        txt_header_state.setText(res.getString(R.string.refresh_refreshing));
+        txt_header_state.setText(res.getString(com.nsnv.mlib.R.string.refresh_refreshing));
     }
 
     @Override
     public void setStateRefreshSuccess() {
         progress_header.setStateRefreshSuccessI();
-        txt_header_state.setText(res.getString(R.string.refresh_sucess));
+        txt_header_state.setText(res.getString(com.nsnv.mlib.R.string.refresh_sucess));
         txt_header_time.setText(new SimpleDateFormat().format(new Date()));
     }
 
     @Override
     public void setStateRefreshFail() {
         progress_header.setStateRefreshFailI();
-        txt_header_state.setText(res.getString(R.string.refresh_fail));
+        txt_header_state.setText(res.getString(com.nsnv.mlib.R.string.refresh_fail));
     }
 }
