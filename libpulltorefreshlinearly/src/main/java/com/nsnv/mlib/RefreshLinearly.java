@@ -9,18 +9,22 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Scroller;
 
 /**
- * Default enable pulling down refreshing.
- * <p/>
- * You must register an OnRefreshListener.
- * <p/>
- * You can stop refreshing by calling stopRefreshSuccess() and stopRefreshFail().
+ * 下拉刷新布局，可以内嵌RecyclerView和ScrollView
  */
 public class RefreshLinearly extends LinearLayout{
+
+    public interface OnRefreshListener{
+        void onRefresh();
+    }
+    public interface OnLoadMoreListener{
+        void onLoadMore();
+    }
 
     private int HEIGHT_HEADER_FOOTER;
     private RefreshHeader header;
@@ -30,7 +34,7 @@ public class RefreshLinearly extends LinearLayout{
     private Scroller mScroller;
 
     private final int MOVE_SHAKE = 20;
-    private boolean enableRefresh = true;
+    private boolean enableRefresh = false;
     private boolean enableLoadmore = false;
     private OnRefreshListener refreshListener;
     private OnLoadMoreListener loadmoreListener;
@@ -38,7 +42,7 @@ public class RefreshLinearly extends LinearLayout{
     private enum STATE{
         Normal,
         PullDown,
-        PullUp;
+        PullUp
     }
     private STATE state;
 
@@ -54,15 +58,6 @@ public class RefreshLinearly extends LinearLayout{
 
     private void init(Context context, AttributeSet attrs) {
 
-        header = new RefreshHeaderMy(context, attrs);
-        LayoutParams lp = new LinearLayout.LayoutParams(context, attrs);
-        lp.gravity = Gravity.CENTER;
-        HEIGHT_HEADER_FOOTER = context.getResources().getDimensionPixelSize(R.dimen.refresh_header_footer_size);
-        lp.topMargin = -HEIGHT_HEADER_FOOTER;
-        addView(header, lp);
-
-        footer = new RefreshFooter(context, attrs);
-
         mScroller = new Scroller(context);
 
     }
@@ -71,19 +66,25 @@ public class RefreshLinearly extends LinearLayout{
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
 
-
         if(!enableRefresh && !enableLoadmore)
             return false;
 
-        if(header.getState() == RefreshStateI.State.RefreshIng
-                || header.getState() == RefreshStateI.State.RefreshSuccess
-                || header.getState() == RefreshStateI.State.RefreshFail){
+        if(null == header && null == footer)
+            return false;
+
+        if(enableRefresh && null != header &&
+                ((header.getState() == RefreshStateI.State.RefreshIng
+                    || header.getState() == RefreshStateI.State.RefreshSuccess
+                    || header.getState() == RefreshStateI.State.RefreshFail))
+                ){
             return false;
         }
 
-        if(footer.getState() == RefreshFooter.STATE.LOADING
-                || footer.getState() == RefreshFooter.STATE.SUCCESS
-                || footer.getState() == RefreshFooter.STATE.FAIL){
+        if(enableLoadmore && null != footer &&
+                ((footer.getState() == RefreshFooter.STATE.LOADING
+                    || footer.getState() == RefreshFooter.STATE.SUCCESS
+                    || footer.getState() == RefreshFooter.STATE.FAIL))
+                ){
             return false;
         }
 
@@ -115,15 +116,22 @@ public class RefreshLinearly extends LinearLayout{
         if(!enableRefresh && !enableLoadmore)
             return false;
 
-        if(header.getState() == RefreshStateI.State.RefreshIng
-                || header.getState() == RefreshStateI.State.RefreshSuccess
-                || header.getState() == RefreshStateI.State.RefreshFail){
+        if(null == header && null == footer)
+            return false;
+
+        if(enableRefresh && null != header &&
+                ((header.getState() == RefreshStateI.State.RefreshIng
+                    || header.getState() == RefreshStateI.State.RefreshSuccess
+                    || header.getState() == RefreshStateI.State.RefreshFail))
+                ){
             return false;
         }
 
-        if(footer.getState() == RefreshFooter.STATE.LOADING
-                || footer.getState() == RefreshFooter.STATE.SUCCESS
-                || footer.getState() == RefreshFooter.STATE.FAIL){
+        if(enableLoadmore && null != footer &&
+                ((footer.getState() == RefreshFooter.STATE.LOADING
+                    || footer.getState() == RefreshFooter.STATE.SUCCESS
+                    || footer.getState() == RefreshFooter.STATE.FAIL))
+                ){
             return false;
         }
 
@@ -137,12 +145,11 @@ public class RefreshLinearly extends LinearLayout{
 
                 int yDiff = (int) (event.getRawY() - yLastRecord);
 
-                if(STATE.PullDown == state){
+                if(STATE.PullDown == state && enableRefresh && null != header){
 
                     LayoutParams lp = (LayoutParams) header.getLayoutParams();
                     int tmpTopMargin = lp.topMargin + yDiff;
 
-//                    lp.topMargin = Math.max(tmpTopMargin, -HEIGHT_HEADER_FOOTER); // I forget why i coded this line
                     lp.topMargin = tmpTopMargin;
 
                     header.setLayoutParams(lp);
@@ -153,7 +160,7 @@ public class RefreshLinearly extends LinearLayout{
                         header.setStatePullDown();
                     }
 
-                }else if(STATE.PullUp == state){
+                }else if(STATE.PullUp == state && enableLoadmore && null != footer){
 
                     LayoutParams lp = (LayoutParams) footer.getLayoutParams();
                     lp.topMargin = lp.topMargin + yDiff;
@@ -179,7 +186,7 @@ public class RefreshLinearly extends LinearLayout{
                 break;
             case MotionEvent.ACTION_UP:
 
-                if(STATE.PullDown == state){
+                if(STATE.PullDown == state && enableRefresh && null != header){
 
                     LayoutParams lp = (LayoutParams) header.getLayoutParams();
                     if(lp.topMargin > HEIGHT_HEADER_FOOTER){
@@ -198,7 +205,7 @@ public class RefreshLinearly extends LinearLayout{
                         mScroller.startScroll(0, lp.topMargin, 0, -yScrollDiff);
                     }
 
-                }else if(STATE.PullUp == state){
+                }else if(STATE.PullUp == state && enableRefresh && null != footer){
 
                     LayoutParams lp = (LayoutParams) footer.getLayoutParams();
 
@@ -229,7 +236,7 @@ public class RefreshLinearly extends LinearLayout{
 
         if(mScroller.computeScrollOffset()){
             int i = mScroller.getCurrY();
-            if( STATE.PullDown == state){
+            if( STATE.PullDown == state && enableRefresh && null != header){
 
                 LayoutParams lp = (LayoutParams) header.getLayoutParams();
                 lp.topMargin = i;
@@ -238,7 +245,7 @@ public class RefreshLinearly extends LinearLayout{
                     state = STATE.Normal;
                 }
 
-            }else if( STATE.PullUp == state){
+            }else if( STATE.PullUp == state && enableLoadmore && null != footer){
 
                 LayoutParams lp = (LayoutParams) footer.getLayoutParams();
                 lp.topMargin = i;
@@ -296,46 +303,8 @@ public class RefreshLinearly extends LinearLayout{
         return true;
     }
 
-    public interface OnRefreshListener{
-        void onRefresh();
-    }
 
-    /**
-     * @param listener Register an OnRefreshListener.
-     */
-    public void setOnRefreshListener(OnRefreshListener listener){
-        this.refreshListener = listener;
-    }
 
-    public interface OnLoadMoreListener{
-        void onLoadMore();
-    }
-
-    /**
-     * @param listener Register an OnLoadMoreListener.
-     */
-    public void setOnLoadMoreListener(OnLoadMoreListener listener){
-        this.loadmoreListener = listener;
-    }
-
-    /**
-     * @param enable Enable refresh or not.
-     */
-    public void setEnableRefresh(boolean enable){
-        this.enableRefresh = enable;
-    }
-
-    public void setEnableLoadmore(boolean enable){
-        if(enable){
-
-            LayoutParams lp = new LayoutParams(header.getLayoutParams());
-            lp.topMargin = 0;
-            footer.setLayoutParams(lp);
-            addView(footer, lp);
-        }
-
-        this.enableLoadmore = enable;
-    }
 
     private void resetHeader(){
         new Handler().postDelayed(new Runnable() {
@@ -363,6 +332,35 @@ public class RefreshLinearly extends LinearLayout{
                 invalidate();
             }
         },1000);
+    }
+
+
+
+    /**
+     * @param enable Enable refresh or not.
+     */
+    public void setEnableRefresh(boolean enable){
+        this.enableRefresh = enable;
+    }
+
+    /**
+     * @param listener Register an OnRefreshListener.
+     */
+    public void setOnRefreshListener(OnRefreshListener listener){
+        this.refreshListener = listener;
+    }
+
+    public void setHeader(Context context, RefreshHeader header){
+        if(null != header)
+            removeView(header);
+
+        LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        lp.gravity = Gravity.CENTER;
+        HEIGHT_HEADER_FOOTER = context.getResources().getDimensionPixelSize(R.dimen.refresh_header_footer_size);
+        lp.topMargin = -HEIGHT_HEADER_FOOTER;
+        addView(header, 0, lp);
+
+        this.header = header;
     }
 
     /**
@@ -398,6 +396,34 @@ public class RefreshLinearly extends LinearLayout{
         }else {
             MLog.e(this, "Header is not refreshing now. Cant stopRefreshFail.");
         }
+    }
+
+
+
+
+
+    public void setEnableLoadmore(boolean enable){
+        this.enableLoadmore = enable;
+    }
+    /**
+     * @param listener Register an OnLoadMoreListener.
+     */
+    public void setOnLoadMoreListener(OnLoadMoreListener listener){
+
+        this.loadmoreListener = listener;
+    }
+
+    public void setFooter(Context context, RefreshFooter footer){
+
+        if(null != footer)
+            removeView(footer);
+
+        LayoutParams lp = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        lp.gravity = Gravity.CENTER;
+        lp.topMargin = 0;
+        addView(footer, this.getChildCount(), lp);
+
+        this.footer = footer;
     }
 
     /**

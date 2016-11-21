@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.nsnv.mlib.RefreshFooter;
 import com.nsnv.mlib.RefreshHeaderMy;
 import com.nsnv.mlib.RefreshLinearly;
 
@@ -36,6 +37,8 @@ public class ActMain extends AppCompatActivity {
         recycler_test.setLayoutManager(new LinearLayoutManager(this));
 
         refresh_linely = (RefreshLinearly) findViewById(R.id.refresh_linely);
+        refresh_linely.setEnableRefresh(true);
+        refresh_linely.setHeader(this, new RefreshHeaderMy(this));
         refresh_linely.setOnRefreshListener(new RefreshLinearly.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -52,6 +55,7 @@ public class ActMain extends AppCompatActivity {
         });
 
         refresh_linely.setEnableLoadmore(true);
+        refresh_linely.setFooter(this, new RefreshFooter(this));
         refresh_linely.setOnLoadMoreListener(new RefreshLinearly.OnLoadMoreListener() {
             @Override
             public void onLoadMore() {

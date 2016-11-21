@@ -42,10 +42,10 @@ public class RefreshFooter extends FrameLayout{
         }
     }
 
-//    public RefreshFooter(Context context) {
-//        super(context);
-//        init(context, null);
-//    }
+    public RefreshFooter(Context context) {
+        super(context);
+        init(context, null);
+    }
 
     public RefreshFooter(Context context, AttributeSet attrs) {
         super(context, attrs);
