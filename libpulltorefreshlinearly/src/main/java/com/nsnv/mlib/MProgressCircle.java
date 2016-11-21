@@ -75,7 +75,7 @@ public class MProgressCircle extends View implements RefreshStateI {
     }
 
     @Override
-    public void setStatePullDown() {
+    public void setStatePullDownI() {
 
         if(State.PullDown != stateCurrent){
 
@@ -85,7 +85,7 @@ public class MProgressCircle extends View implements RefreshStateI {
     }
 
     @Override
-    public void setStatePullUp() {
+    public void setStatePullUpI() {
 
         if(State.PullUp != stateCurrent){
 
@@ -95,7 +95,7 @@ public class MProgressCircle extends View implements RefreshStateI {
     }
 
     @Override
-    public void setStateRefreshIng() {
+    public void setStateRefreshIngI() {
         if(State.RefreshIng != stateCurrent){
 
             stateCurrent = State.RefreshIng;
@@ -115,7 +115,7 @@ public class MProgressCircle extends View implements RefreshStateI {
     }
 
     @Override
-    public void setStateRefreshSuccess() {
+    public void setStateRefreshSuccessI() {
         if( State.RefreshSuccess != stateCurrent){
 
             stateCurrent = State.RefreshSuccess;
@@ -126,7 +126,7 @@ public class MProgressCircle extends View implements RefreshStateI {
     }
 
     @Override
-    public void setStateRefreshFail() {
+    public void setStateRefreshFailI() {
         if( State.RefreshFail != stateCurrent){
 
             stateCurrent = State.RefreshFail;

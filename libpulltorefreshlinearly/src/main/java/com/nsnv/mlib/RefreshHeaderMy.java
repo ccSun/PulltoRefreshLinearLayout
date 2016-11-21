@@ -7,10 +7,8 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -19,7 +17,7 @@ import java.util.Date;
 /**
  * Change state by setState(?)
  */
-public class RefreshHeaderMy extends RefreshHeader {
+public class RefreshHeaderMy extends RefreshBase {
 
     private MProgressCircle progress_header;
     private TextView txt_header_state;
@@ -73,37 +71,32 @@ public class RefreshHeaderMy extends RefreshHeader {
 
     @Override
     public void setStatePullDown() {
-        stateCurrent = State.PullDown;
-        progress_header.setStatePullDown();
+        progress_header.setStatePullDownI();
         txt_header_state.setText(res.getString(R.string.refresh_header_pulldown));
     }
 
     @Override
     public void setStatePullUp() {
-        stateCurrent = State.PullUp;
-        progress_header.setStatePullUp();
+        progress_header.setStatePullUpI();
         txt_header_state.setText(res.getString(R.string.refresh_release));
     }
 
     @Override
     public void setStateRefreshIng() {
-        stateCurrent = State.RefreshIng;
-        progress_header.setStateRefreshIng();
+        progress_header.setStateRefreshIngI();
         txt_header_state.setText(res.getString(R.string.refresh_refreshing));
     }
 
     @Override
     public void setStateRefreshSuccess() {
-        stateCurrent = State.RefreshSuccess;
-        progress_header.setStateRefreshSuccess();
+        progress_header.setStateRefreshSuccessI();
         txt_header_state.setText(res.getString(R.string.refresh_sucess));
         txt_header_time.setText(new SimpleDateFormat().format(new Date()));
     }
 
     @Override
     public void setStateRefreshFail() {
-        stateCurrent = State.RefreshFail;
-        progress_header.setStateRefreshFail();
+        progress_header.setStateRefreshFailI();
         txt_header_state.setText(res.getString(R.string.refresh_fail));
     }
 }

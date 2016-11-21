@@ -15,9 +15,9 @@ public interface RefreshStateI {
         RefreshFail;
     }
 
-    void setStatePullDown();
-    void setStatePullUp();
-    void setStateRefreshIng();
-    void setStateRefreshSuccess();
-    void setStateRefreshFail();
+    void setStatePullDownI();
+    void setStatePullUpI();
+    void setStateRefreshIngI();
+    void setStateRefreshSuccessI();
+    void setStateRefreshFailI();
 }

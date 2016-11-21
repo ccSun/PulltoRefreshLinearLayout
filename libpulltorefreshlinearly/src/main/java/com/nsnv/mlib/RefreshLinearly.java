@@ -1,8 +1,6 @@
 package com.nsnv.mlib;
 
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
@@ -27,8 +25,8 @@ public class RefreshLinearly extends LinearLayout{
     }
 
     private int HEIGHT_HEADER_FOOTER;
-    private RefreshHeader header;
-    private RefreshFooter footer;
+    private RefreshBase header;
+    private RefreshFooterMy footer;
 
     private int yLastRecord = -1;
     private Scroller mScroller;
@@ -81,9 +79,9 @@ public class RefreshLinearly extends LinearLayout{
         }
 
         if(enableLoadmore && null != footer &&
-                ((footer.getState() == RefreshFooter.STATE.LOADING
-                    || footer.getState() == RefreshFooter.STATE.SUCCESS
-                    || footer.getState() == RefreshFooter.STATE.FAIL))
+                ((footer.getState() == RefreshStateI.State.RefreshIng
+                    || footer.getState() == RefreshStateI.State.RefreshSuccess
+                    || footer.getState() == RefreshStateI.State.RefreshFail))
                 ){
             return false;
         }
@@ -128,9 +126,9 @@ public class RefreshLinearly extends LinearLayout{
         }
 
         if(enableLoadmore && null != footer &&
-                ((footer.getState() == RefreshFooter.STATE.LOADING
-                    || footer.getState() == RefreshFooter.STATE.SUCCESS
-                    || footer.getState() == RefreshFooter.STATE.FAIL))
+                ((footer.getState() == RefreshStateI.State.RefreshIng
+                    || footer.getState() == RefreshStateI.State.RefreshSuccess
+                    || footer.getState() == RefreshStateI.State.RefreshFail))
                 ){
             return false;
         }
@@ -155,9 +153,9 @@ public class RefreshLinearly extends LinearLayout{
                     header.setLayoutParams(lp);
 
                     if(lp.topMargin > HEIGHT_HEADER_FOOTER) {
-                        header.setStatePullUp();
+                        header.setStatePullUpI();
                     }else{
-                        header.setStatePullDown();
+                        header.setStatePullDownI();
                     }
 
                 }else if(STATE.PullUp == state && enableLoadmore && null != footer){
@@ -167,9 +165,9 @@ public class RefreshLinearly extends LinearLayout{
                     footer.setLayoutParams(lp);
 
                     if(-lp.topMargin > 2*HEIGHT_HEADER_FOOTER){
-                        footer.setState(RefreshFooter.STATE.ARROW_DOWN);
+                        footer.setStatePullDownI();
                     }else{
-                        footer.setState(RefreshFooter.STATE.ARROW_UP);
+                        footer.setStatePullUpI();
                     }
 
                     View view = this.getChildAt(this.getChildCount() - 2);
@@ -194,7 +192,7 @@ public class RefreshLinearly extends LinearLayout{
                         int yScroll = lp.topMargin;
                         mScroller.startScroll(0, yScroll, 0, -yScroll);
 
-                        header.setStateRefreshIng();
+                        header.setStateRefreshIngI();
                         if(null == refreshListener)
                             throw new NullPointerException(this.getClass().toString() + " - you havent register an OnRefreshListener.");
                         refreshListener.onRefresh();
@@ -214,7 +212,7 @@ public class RefreshLinearly extends LinearLayout{
                         int yScrollDiff = lp.topMargin;
                         mScroller.startScroll(0, yScrollDiff, 0, -yScrollDiff - HEIGHT_HEADER_FOOTER);
 
-                        footer.setState(RefreshFooter.STATE.LOADING);
+                        footer.setStateRefreshIngI();
                         if(null == loadmoreListener)
                             throw new NullPointerException(this.getClass().toString() + " - you havent register an OnLoadMoreListener.");
                         loadmoreListener.onLoadMore();
@@ -314,7 +312,7 @@ public class RefreshLinearly extends LinearLayout{
                 LayoutParams lp = (LayoutParams) header.getLayoutParams();
                 int yScroll = lp.topMargin;
                 mScroller.startScroll(0, yScroll, 0, -HEIGHT_HEADER_FOOTER);
-                header.setStatePullDown();
+                header.setStatePullDownI();
                 invalidate();
             }
         },1000);
@@ -328,7 +326,7 @@ public class RefreshLinearly extends LinearLayout{
                 LayoutParams lp = (LayoutParams) footer.getLayoutParams();
                 int yScroll = lp.topMargin;
                 mScroller.startScroll(0, yScroll, 0, -yScroll);
-                footer.setState(RefreshFooter.STATE.ARROW_UP);
+                footer.setStatePullUpI();
                 invalidate();
             }
         },1000);
@@ -350,7 +348,7 @@ public class RefreshLinearly extends LinearLayout{
         this.refreshListener = listener;
     }
 
-    public void setHeader(Context context, RefreshHeader header){
+    public void setHeader(Context context, RefreshBase header){
         if(null != header)
             removeView(header);
 
@@ -370,7 +368,7 @@ public class RefreshLinearly extends LinearLayout{
         LayoutParams lp = (LayoutParams) header.getLayoutParams();
         if(0 == lp.topMargin && enableRefresh){
 
-            header.setStateRefreshSuccess();
+            header.setStateRefreshSuccessI();
             resetHeader();
 
             View view = this.getChildAt(1);
@@ -391,7 +389,7 @@ public class RefreshLinearly extends LinearLayout{
         LayoutParams lp = (LayoutParams) header.getLayoutParams();
         if(0 == lp.topMargin && enableRefresh){
 
-            header.setStateRefreshFail();
+            header.setStateRefreshFailI();
             resetHeader();
         }else {
             MLog.e(this, "Header is not refreshing now. Cant stopRefreshFail.");
@@ -413,7 +411,7 @@ public class RefreshLinearly extends LinearLayout{
         this.loadmoreListener = listener;
     }
 
-    public void setFooter(Context context, RefreshFooter footer){
+    public void setFooter(Context context, RefreshFooterMy footer){
 
         if(null != footer)
             removeView(footer);
@@ -433,7 +431,7 @@ public class RefreshLinearly extends LinearLayout{
         LayoutParams lp = (LayoutParams) footer.getLayoutParams();
         if(-HEIGHT_HEADER_FOOTER == lp.topMargin && enableLoadmore){
 
-            footer.setState(RefreshFooter.STATE.SUCCESS);
+            footer.setStateRefreshSuccessI();
             resetFooter();
         }else {
 
@@ -448,7 +446,7 @@ public class RefreshLinearly extends LinearLayout{
         LayoutParams lp = (LayoutParams) footer.getLayoutParams();
         if(-HEIGHT_HEADER_FOOTER == lp.topMargin && enableLoadmore){
 
-            footer.setState(RefreshFooter.STATE.FAIL);
+            footer.setStateRefreshFailI();
             resetFooter();
         }else {
             MLog.e(this, "Footer is not refreshing now. Cant stopLoadMoreFail.");

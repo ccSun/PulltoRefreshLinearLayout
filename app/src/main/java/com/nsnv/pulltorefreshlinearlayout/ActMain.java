@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.nsnv.mlib.RefreshFooter;
+import com.nsnv.mlib.RefreshFooterMy;
 import com.nsnv.mlib.RefreshHeaderMy;
 import com.nsnv.mlib.RefreshLinearly;
 
@@ -55,7 +55,7 @@ public class ActMain extends AppCompatActivity {
         });
 
         refresh_linely.setEnableLoadmore(true);
-        refresh_linely.setFooter(this, new RefreshFooter(this));
+        refresh_linely.setFooter(this, new RefreshFooterMy(this));
         refresh_linely.setOnLoadMoreListener(new RefreshLinearly.OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
