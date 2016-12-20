@@ -15,7 +15,7 @@ import android.widget.Scroller;
 /**
  * 下拉刷新布局，可以内嵌RecyclerView和ScrollView
  */
-public class RefreshLinearly extends LinearLayout{
+public class RefreshLinearly extends LinearLayout {
 
     public interface OnRefreshListener{
         void onRefresh();
@@ -30,6 +30,10 @@ public class RefreshLinearly extends LinearLayout{
 
     private int yLastRecord = -1;
     private Scroller mScroller;
+
+    private final float OFFSET_RATIO = 1.4f;
+
+    private final int DURATION_SCROLL = 300;
 
     private final int MOVE_SHAKE = 20;
     private boolean enableRefresh = false;
@@ -72,16 +76,16 @@ public class RefreshLinearly extends LinearLayout{
 
         if(enableRefresh && null != header &&
                 ((header.getState() == RefreshStateI.State.RefreshIng
-                    || header.getState() == RefreshStateI.State.RefreshSuccess
-                    || header.getState() == RefreshStateI.State.RefreshFail))
+                        || header.getState() == RefreshStateI.State.RefreshSuccess
+                        || header.getState() == RefreshStateI.State.RefreshFail))
                 ){
             return false;
         }
 
         if(enableLoadmore && null != footer &&
                 ((footer.getState() == RefreshStateI.State.RefreshIng
-                    || footer.getState() == RefreshStateI.State.RefreshSuccess
-                    || footer.getState() == RefreshStateI.State.RefreshFail))
+                        || footer.getState() == RefreshStateI.State.RefreshSuccess
+                        || footer.getState() == RefreshStateI.State.RefreshFail))
                 ){
             return false;
         }
@@ -94,7 +98,7 @@ public class RefreshLinearly extends LinearLayout{
                 break;
             case MotionEvent.ACTION_MOVE:
 
-                int yDiff = (int) (event.getRawY() - yLastRecord);
+                int yDiff = (int) ((event.getRawY() - yLastRecord)/OFFSET_RATIO);
                 if( yDiff > MOVE_SHAKE && !canChildViewPullDown()) {
                     state = STATE.PullDown;
                     return true;
@@ -108,6 +112,10 @@ public class RefreshLinearly extends LinearLayout{
         return  false;
     }
 
+    private boolean headerAlreadyTurnUp = false;
+
+    private boolean footerAlreadyTrunDown = false;
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
@@ -119,16 +127,16 @@ public class RefreshLinearly extends LinearLayout{
 
         if(enableRefresh && null != header &&
                 ((header.getState() == RefreshStateI.State.RefreshIng
-                    || header.getState() == RefreshStateI.State.RefreshSuccess
-                    || header.getState() == RefreshStateI.State.RefreshFail))
+                        || header.getState() == RefreshStateI.State.RefreshSuccess
+                        || header.getState() == RefreshStateI.State.RefreshFail))
                 ){
             return false;
         }
 
         if(enableLoadmore && null != footer &&
                 ((footer.getState() == RefreshStateI.State.RefreshIng
-                    || footer.getState() == RefreshStateI.State.RefreshSuccess
-                    || footer.getState() == RefreshStateI.State.RefreshFail))
+                        || footer.getState() == RefreshStateI.State.RefreshSuccess
+                        || footer.getState() == RefreshStateI.State.RefreshFail))
                 ){
             return false;
         }
@@ -141,7 +149,7 @@ public class RefreshLinearly extends LinearLayout{
                 break;
             case MotionEvent.ACTION_MOVE:
 
-                int yDiff = (int) (event.getRawY() - yLastRecord);
+                int yDiff = (int) ((event.getRawY() - yLastRecord)/OFFSET_RATIO);
 
                 if(STATE.PullDown == state && enableRefresh && null != header){
 
@@ -152,10 +160,12 @@ public class RefreshLinearly extends LinearLayout{
 
                     header.setLayoutParams(lp);
 
-                    if(lp.topMargin > HEIGHT_HEADER_FOOTER) {
+                    if(lp.topMargin > HEIGHT_HEADER_FOOTER && !headerAlreadyTurnUp) {
                         header.setStatePullUpI();
-                    }else{
+                        headerAlreadyTurnUp = true;
+                    }else if(lp.topMargin < HEIGHT_HEADER_FOOTER && headerAlreadyTurnUp){
                         header.setStatePullDownI();
+                        headerAlreadyTurnUp = false;
                     }
 
                 }else if(STATE.PullUp == state && enableLoadmore && null != footer){
@@ -164,10 +174,12 @@ public class RefreshLinearly extends LinearLayout{
                     lp.topMargin = lp.topMargin + yDiff;
                     footer.setLayoutParams(lp);
 
-                    if(-lp.topMargin > 2*HEIGHT_HEADER_FOOTER){
+                    if(-lp.topMargin > 2*HEIGHT_HEADER_FOOTER && !footerAlreadyTrunDown){
                         footer.setStatePullDownI();
-                    }else{
+                        footerAlreadyTrunDown = true;
+                    }else if(-lp.topMargin < 2*HEIGHT_HEADER_FOOTER && footerAlreadyTrunDown){
                         footer.setStatePullUpI();
+                        footerAlreadyTrunDown = false;
                     }
 
                     View view = this.getChildAt(this.getChildCount() - 2);
@@ -190,12 +202,17 @@ public class RefreshLinearly extends LinearLayout{
                     if(lp.topMargin > HEIGHT_HEADER_FOOTER){
 
                         int yScroll = lp.topMargin;
-                        mScroller.startScroll(0, yScroll, 0, -yScroll);
-
-                        header.setStateRefreshIngI();
-                        if(null == refreshListener)
-                            throw new NullPointerException(this.getClass().toString() + " - you havent register an OnRefreshListener.");
-                        refreshListener.onRefresh();
+                        mScroller.startScroll(0, yScroll, 0, -yScroll, DURATION_SCROLL);
+                        new android.os.Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                header.setStateRefreshIngI();
+                                if(null == refreshListener)
+                                    throw new NullPointerException(this.getClass().toString() + " - you havent register an OnRefreshListener.");
+                                else
+                                    refreshListener.onRefresh();
+                            }
+                        }, DURATION_SCROLL);
 
                     }else{
 
@@ -210,12 +227,18 @@ public class RefreshLinearly extends LinearLayout{
                     if(-lp.topMargin > 2*HEIGHT_HEADER_FOOTER){
 
                         int yScrollDiff = lp.topMargin;
-                        mScroller.startScroll(0, yScrollDiff, 0, -yScrollDiff - HEIGHT_HEADER_FOOTER);
+                        mScroller.startScroll(0, yScrollDiff, 0, -yScrollDiff - HEIGHT_HEADER_FOOTER, DURATION_SCROLL);
 
-                        footer.setStateRefreshIngI();
-                        if(null == loadmoreListener)
-                            throw new NullPointerException(this.getClass().toString() + " - you havent register an OnLoadMoreListener.");
-                        loadmoreListener.onLoadMore();
+                        new android.os.Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                footer.setStateRefreshIngI();
+                                if(null == loadmoreListener)
+                                    throw new NullPointerException(this.getClass().toString() + " - you havent register an OnLoadMoreListener.");
+                                else
+                                    loadmoreListener.onLoadMore();
+                            }
+                        }, DURATION_SCROLL);
 
                     }else{
 
@@ -365,6 +388,8 @@ public class RefreshLinearly extends LinearLayout{
      * Call this func to stop refreshing when you get data successfully.
      */
     public void stopRefreshSuccess(){
+        if(null == header)
+            return;
         LayoutParams lp = (LayoutParams) header.getLayoutParams();
         if(0 == lp.topMargin && enableRefresh){
 
@@ -378,7 +403,7 @@ public class RefreshLinearly extends LinearLayout{
 
         }else {
 
-            android.util.Log.e("stopRefreshSuccess", "Header is not refreshing now. Cant stopRefreshSuccess.");
+            android.util.Log.i(this.toString(), "Header is not refreshing now. Cant stopRefreshSuccess. :s" + lp.topMargin);
         }
     }
 
@@ -392,7 +417,7 @@ public class RefreshLinearly extends LinearLayout{
             header.setStateRefreshFailI();
             resetHeader();
         }else {
-            android.util.Log.e("stopRefreshFail", "Header is not refreshing now. Cant stopRefreshFail.");
+            android.util.Log.i(this.toString(), "Header is not refreshing now. Cant stopRefreshFail.");
         }
     }
 
@@ -435,7 +460,7 @@ public class RefreshLinearly extends LinearLayout{
             resetFooter();
         }else {
 
-            android.util.Log.e("stopLoadMoreSuccess", "Footer is not refreshing now. Cant stopLoadMoreSuccess.");
+            android.util.Log.i(this.toString(), "Footer is not refreshing now. Cant stopLoadMoreSuccess.");
         }
     }
 
@@ -449,7 +474,7 @@ public class RefreshLinearly extends LinearLayout{
             footer.setStateRefreshFailI();
             resetFooter();
         }else {
-            android.util.Log.e("stopLoadMoreFail", "Footer is not refreshing now. Cant stopLoadMoreFail.");
+            android.util.Log.e(this.toString(), "Footer is not refreshing now. Cant stopLoadMoreFail.");
         }
     }
 }

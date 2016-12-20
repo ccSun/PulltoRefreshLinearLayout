@@ -48,7 +48,7 @@ public class ActMain extends AppCompatActivity {
                         adapter.notifyItemInserted(0);
                         refresh_linely.stopRefreshSuccess();
                     }
-                }, 1700);
+                }, 2000);
             }
         });
 
